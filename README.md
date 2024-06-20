@@ -18,7 +18,9 @@ Este repositório contém scripts para automatizar a configuração de ambientes
    git clone https://github.com/brunoopetri/web-server-automation-scripts.git
    cd web-server-automation-scripts/bash
 
+
 Explicação Detalhada
+
 1. Atualização de Pacotes (Bash):
 
 sudo apt update -y: Atualiza a lista de pacotes disponíveis e suas versões para garantir que estamos instalando as versões mais recentes dos pacotes.
