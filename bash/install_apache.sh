@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE="/usr/local/logs/install_apache.log"
-BACKUP_DIR="/usr/local/backups/apache2"
+BACKUP_DIR="/usr/local/backups/apache"
 
 exec > >(tee -a $LOG_FILE) 2>&1
 
@@ -9,27 +9,32 @@ exec > >(tee -a $LOG_FILE) 2>&1
 echo "Atualizando os pacotes..."
 sudo apt-get update -y
 
-# Faz o backup da configuração existente do Apache
-APACHE_CONF="/etc/apache2/apache2.conf"
-mkdir -p $BACKUP_DIR
-cp $APACHE_CONF $BACKUP_DIR/apache2.conf.$(date +%F_%T)
-echo "Backup da configuração do Apache criado em $BACKUP_DIR"
-
-# Instala o Apache
-echo "Instalando o Apache..."
+# Instala e configura o Apache2
+echo "Instalando e configurando o Apache2..."
 sudo apt-get install apache2 -y
-
-# Inicia o serviço Apache
-echo "Iniciando o serviço Apache..."
+cat <<EOT > /etc/apache2/ports.conf
+Listen 8081
+EOT
+cat <<EOT > /etc/apache2/sites-available/000-default.conf
+<VirtualHost *:8081>
+    DocumentRoot /var/www/html
+    <Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
+EOT
+sudo a2enmod rewrite
 sudo service apache2 start
 
-# Verifica o status do Apache
-echo "Verificando o status do Apache..."
+# Verifica o status do Apache2
+echo "Verificando o status do Apache2..."
 if pgrep apache2 >/dev/null; then
-    echo "Apache instalado e em execução com sucesso!"
+    echo "Apache2 instalado e em execução com sucesso!"
 else
-    echo "Falha ao iniciar o Apache."
+    echo "Falha ao iniciar o Apache2."
     exit 1
 fi
 
-echo "Instalação e configuração do Apache concluídas com sucesso!"
+echo "Instalação e configuração do Apache2 concluídas com sucesso!"

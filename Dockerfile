@@ -9,26 +9,26 @@ RUN apt-get update && \
     apt-get install -y \
     sudo \
     curl \
-    apache2 \
     nginx \
-    zip \
-    unzip && \
+    apache2 && \
     apt-get clean
 
 # Criar diretórios para scripts e logs
 RUN mkdir -p /usr/local/scripts/bash /usr/local/logs /usr/local/backups
 
 # Copiar scripts para o contêiner
-COPY bash/* /usr/local/scripts/bash/
+COPY bash/install_nginx.sh /usr/local/scripts/bash/install_nginx.sh
+COPY bash/install_apache.sh /usr/local/scripts/bash/install_apache.sh
 
 # Dar permissão de execução aos scripts Bash
-RUN chmod +x /usr/local/scripts/bash/*.sh
+RUN chmod +x /usr/local/scripts/bash/install_nginx.sh
+RUN chmod +x /usr/local/scripts/bash/install_apache.sh
 
 # Expor as portas dos servidores web
-EXPOSE 80 443 8080
+EXPOSE 8080 8081
 
 # Definir o diretório de trabalho
 WORKDIR /usr/local/scripts
 
 # Comando padrão ao iniciar o contêiner
-CMD ["bash", "-c", "/usr/local/scripts/bash/install_apache.sh && /usr/local/scripts/bash/install_nginx.sh"]
+CMD ["bash", "-c", "/usr/local/scripts/bash/install_nginx.sh && /usr/local/scripts/bash/install_apache.sh && tail -f /dev/null"]

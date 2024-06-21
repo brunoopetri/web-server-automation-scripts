@@ -9,22 +9,21 @@ exec > >(tee -a $LOG_FILE) 2>&1
 echo "Atualizando os pacotes..."
 sudo apt-get update -y
 
-# Faz o backup da configuração existente do Nginx
-NGINX_CONF="/etc/nginx/nginx.conf"
-mkdir -p $BACKUP_DIR
-cp $NGINX_CONF $BACKUP_DIR/nginx.conf.$(date +%F_%T)
-echo "Backup da configuração do Nginx criado em $BACKUP_DIR"
-
-# Instala o Nginx
-echo "Instalando o Nginx..."
+# Instala e configura o Nginx
+echo "Instalando e configurando o Nginx..."
 sudo apt-get install nginx -y
+cat <<EOT > /etc/nginx/sites-available/default
+server {
+    listen 8080;
+    server_name localhost;
 
-# Instala o Nginx
-echo "Instalando o Nginx..."
-sudo apt-get install nginx -y
-
-# Inicia o serviço Nginx
-echo "Iniciando o serviço Nginx..."
+    location / {
+        root /usr/share/nginx/html;
+        index index.html index.htm;
+    }
+}
+EOT
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
 
 # Verifica o status do Nginx
