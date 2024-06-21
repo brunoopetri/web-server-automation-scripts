@@ -56,70 +56,115 @@ Descrição dos Arquivos e Diretórios
 
 4. Acesse os serviços via navegador:
 
- - Apache: http://localhost
+ - Apache: http://localhost:8081
  - Nginx: http://localhost:8080
 
 Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente a configuração e automação dos servidores web Apache e Nginx no ambiente Docker.
 
-Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
+
 
 ㅤㅤ4.1  Verificação dos Serviços Apache e Nginx:
 
 ㅤ    Para garantir que os serviços Apache e Nginx estão em execução dentro do contêiner interativamente:
 
 <img width="1277" alt="Captura de tela 2024-06-19 184113" src="https://github.com/brunoopetri/footy108/assets/98756562/bc944ff0-4f0f-4a40-b011-be14250113df">
+ㅤ
+
+- Apache: http://localhost:8081:
+
+<img width="1280" alt="apache2" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/d1796c00-069a-428e-b212-97686f5bf655">
+ㅤ
+
+- Nginx: http://localhost:8080:
+  
+<img width="1280" alt="nginx" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/62083e87-9252-41e1-994f-d46cb1b51bd2">
+
 
 ### Descrição do install_apache.sh
 
 . Esta linha define o interpretador a ser utilizado para executar o script, neste caso, o Bash.
+
 ㅤ`#!/bin/bash`
 
 . Essas linhas definem variáveis que armazenam o caminho do arquivo de log e do diretório de backup, respectivamente.
+
 ㅤ`LOG_FILE="/usr/local/logs/install_apache.log"`
+
 ㅤ`BACKUP_DIR="/usr/local/backups/apache"`
 
 . Redireciona a saída padrão e a saída de erro para o arquivo de log definido em LOG_FILE, permitindo também que a saída seja exibida no terminal em tempo real.
+
 ㅤ`exec > >(tee -a $LOG_FILE) 2>&1`
 
-Imprime uma mensagem indicando que os pacotes estão sendo atualizados e executa o comando para atualizar a lista de pacotes do sistema.
+. Imprime uma mensagem indicando que os pacotes estão sendo atualizados e executa o comando para atualizar a lista de pacotes do sistema.
+
 ㅤ`echo "Atualizando os pacotes..."`
+
 ㅤ`sudo apt-get update -y`
 
-Imprime uma mensagem indicando que o Apache2 está sendo instalado e executa o comando para instalar o servidor Apache2.
+. Imprime uma mensagem indicando que o Apache2 está sendo instalado e executa o comando para instalar o servidor Apache2.
+
 ㅤ`echo "Instalando e configurando o Apache2..."`
+
 ㅤ`sudo apt-get install apache2 -y`
 
-Modifica o arquivo de configuração do Apache para que ele escute na porta 8081 em vez da porta padrão (80).
+. Modifica o arquivo de configuração do Apache para que ele escute na porta 8081 em vez da porta padrão (80).
+
 ㅤ`cat <<EOT > /etc/apache2/ports.conf`
+
 ㅤ`Listen 8081`
+
 ㅤ`EOT`
 
-Cria um novo arquivo de configuração de site padrão para o Apache, definindo que o servidor irá responder na porta 8081 e que o diretório raiz dos documentos será /var/www/html.
-ㅤ`cat <<EOT > /etc/apache2/sites-available/000-default.conf
-ㅤ`<VirtualHost *:8081>
+. Cria um novo arquivo de configuração de site padrão para o Apache, definindo que o servidor irá responder na porta 8081 e que o diretório raiz dos documentos será /var/www/html.
+
+ㅤ`cat <<EOT > /etc/apache2/sites-available/000-default.conf`
+
+ㅤ`<VirtualHost *:8081>`
+
 ㅤ    `DocumentRoot /var/www/html`
+
 ㅤ    `<Directory /var/www/html>`
+
 ㅤ        `Options Indexes FollowSymLinks`
+
 ㅤ        `AllowOverride None`
+
  ㅤ       `Require all granted`
+
  ㅤ   `</Directory>`
+
 ㅤ`</VirtualHost>`
+
 ㅤ`EOT`
 
-Habilita o módulo rewrite do Apache, que permite a reescrita de URLs
+. Habilita o módulo rewrite do Apache, que permite a reescrita de URLs
+
 ㅤ`sudo a2enmod rewrite`
 
-Inicia o serviço Apache.
+. Inicia o serviço Apache.
+
 ㅤ`sudo service apache2 start`
 
-Imprime uma mensagem indicando que o status do Apache2 está sendo verificado. Se o processo do Apache2 estiver em execução, imprime uma mensagem de sucesso; caso contrário, imprime uma mensagem de falha e encerra o script com código de erro 1.
+. Imprime uma mensagem indicando que o status do Apache2 está sendo verificado. Se o processo do Apache2 estiver em execução, imprime uma mensagem de sucesso; caso contrário, imprime uma mensagem de falha e encerra o script com código de erro 1.
+
 ㅤ`echo "Verificando o status do Apache2..."`
+
 ㅤ`if pgrep apache2 >/dev/null; then`
+
  ㅤ   `echo "Apache2 instalado e em execução com sucesso!"`
+
 ㅤ`else`
+
 ㅤ    `echo "Falha ao iniciar o Apache2."`
+
 ㅤ    `exit 1`
+
 ㅤ`fi`
 
-Imprime uma mensagem final indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
+. Imprime uma mensagem final indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
+
 ㅤ`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
+ㅤ
+
+Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
