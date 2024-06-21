@@ -70,9 +70,10 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 ㅤㅤㅤ`docker exec -it webserver_container bash`
 
 ㅤㅤㅤ`cat /usr/local/logs/test_servers.log`
+
 ㅤ
 
-ㅤㅤㅤ- Exemplo de visualização dos logs:
+ㅤㅤㅤ- Exemplo de visualização logs do test_servers:
 
 ㅤ<img width="1278" alt="test_servers" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/822381bf-ce2f-43cc-a10c-ce85a61be94e">
 
