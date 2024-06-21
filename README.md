@@ -67,9 +67,7 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ㅤㅤㅤApós iniciar o contêiner, verifique os logs do test_servers, no terminal:
 
-ㅤㅤㅤ`docker exec -it webserver_container bash`
-
-ㅤㅤㅤ`cat /usr/local/logs/test_servers.log`
+    ㅤㅤㅤdocker exec -it webserver_container cat /usr/local/logs/test_servers.log
 
 ㅤ
 
