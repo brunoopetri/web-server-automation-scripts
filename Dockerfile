@@ -19,10 +19,12 @@ RUN mkdir -p /usr/local/scripts/bash /usr/local/logs /usr/local/backups
 # Copiar scripts para o contêiner
 COPY bash/install_nginx.sh /usr/local/scripts/bash/install_nginx.sh
 COPY bash/install_apache.sh /usr/local/scripts/bash/install_apache.sh
+COPY bash/test_servers.sh /usr/local/scripts/bash/test_servers.sh
 
 # Dar permissão de execução aos scripts Bash
 RUN chmod +x /usr/local/scripts/bash/install_nginx.sh
 RUN chmod +x /usr/local/scripts/bash/install_apache.sh
+RUN chmod +x /usr/local/scripts/bash/test_servers.sh
 
 # Expor as portas dos servidores web
 EXPOSE 8080 8081
@@ -31,4 +33,4 @@ EXPOSE 8080 8081
 WORKDIR /usr/local/scripts
 
 # Comando padrão ao iniciar o contêiner
-CMD ["bash", "-c", "/usr/local/scripts/bash/install_nginx.sh && /usr/local/scripts/bash/install_apache.sh && tail -f /dev/null"]
+CMD ["bash", "-c", "/usr/local/scripts/bash/install_nginx.sh && /usr/local/scripts/bash/install_apache.sh && /usr/local/scripts/bash/test_servers.sh && tail -f /dev/null"]
