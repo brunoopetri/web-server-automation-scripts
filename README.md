@@ -65,9 +65,18 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ㅤㅤ4.1  Verificação dos Serviços Apache e Nginx:
 
+ㅤㅤㅤApós iniciar o contêiner, verifiquei os logs do test_servers, no terminal:
+
+ㅤㅤㅤ`docker exec -it webserver_container bash`
+
+ㅤㅤㅤ`cat /usr/local/logs/test_servers.log`
+
+
+<img width="1278" alt="test_servers" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/822381bf-ce2f-43cc-a10c-ce85a61be94e">
+
 ㅤ    Para garantir que os serviços Apache e Nginx estão em execução dentro do contêiner interativamente:
 
-<img width="1277" alt="Captura de tela 2024-06-19 184113" src="https://github.com/brunoopetri/footy108/assets/98756562/bc944ff0-4f0f-4a40-b011-be14250113df">
+<img width="1279" alt="logs_servers" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/53e6f0dd-c15d-4683-95b4-c1de030b8f78">
 ㅤ
 
 - Apache: http://localhost:8081:
