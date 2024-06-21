@@ -63,16 +63,18 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 
 
-ㅤㅤ4.1  Verificação dos Serviços Apache e Nginx:
+ㅤㅤ4.1  Para visualizar a saída do `script test_servers.sh` e garantir que os testes automáticos dos servidores Nginx e Apache2 foram executados com sucesso, você pode seguir estas etapas:
 
-ㅤㅤㅤApós iniciar o contêiner, verifiquei os logs do test_servers, no terminal:
+ㅤㅤㅤApós iniciar o contêiner, verifique os logs do test_servers, no terminal:
 
 ㅤㅤㅤ`docker exec -it webserver_container bash`
 
 ㅤㅤㅤ`cat /usr/local/logs/test_servers.log`
+ㅤ
 
+ㅤㅤㅤ- Exemplo de visualização dos logs:
 
-<img width="1278" alt="test_servers" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/822381bf-ce2f-43cc-a10c-ce85a61be94e">
+ㅤ<img width="1278" alt="test_servers" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/822381bf-ce2f-43cc-a10c-ce85a61be94e">
 
 ㅤ    Para garantir que os serviços Apache e Nginx estão em execução dentro do contêiner interativamente:
 
