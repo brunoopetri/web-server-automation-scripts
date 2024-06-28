@@ -180,25 +180,34 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤㅤㅤ3. Diretórios e Permissões:
 
-Define opções para o diretório /var/www/html no VirtualHost.
-Configura permissões (Require all granted) para acessar o diretório.
+ㅤㅤㅤㅤDefine opções para o diretório /var/www/html no VirtualHost.
+
+ㅤㅤㅤㅤConfigura permissões (Require all granted) para acessar o diretório.
 
 ㅤㅤNginx Script:
+
 ㅤㅤㅤ1. Porta e Servidor:
 
-Define a porta para o Nginx ouvindo (listen 8080).
-Configura um servidor padrão em /etc/nginx/sites-available/default.
+ㅤㅤㅤㅤDefine a porta para o Nginx ouvindo (listen 8080).
+
+ㅤㅤㅤㅤConfigura um servidor padrão em /etc/nginx/sites-available/default.
+
 ㅤㅤㅤ2. Diretórios e Index:
 
-Define o diretório raiz (root /usr/share/nginx/html) para servir conteúdo estático.
-Define o arquivo de índice padrão (index index.html index.htm).
+ㅤㅤㅤㅤDefine o diretório raiz (root /usr/share/nginx/html) para servir conteúdo estático.
+
+ㅤㅤㅤㅤDefine o arquivo de índice padrão (index index.html index.htm).
+
 ㅤㅤㅤ3. Habilitação de Configuração:
 
-Cria um link simbólico para habilitar o arquivo de configuração em /etc/nginx/sites-enabled/default.
+ㅤㅤㅤㅤCria um link simbólico para habilitar o arquivo de configuração em /etc/nginx/sites-enabled/default.
+
 ㅤㅤㅤ### Verificação de Status:
+
 ㅤㅤㅤㅤAmbos os scripts verificam se o serviço está em execução usando pgrep e fornecem mensagens de sucesso ou falha com base nessa verificação.
 
 ㅤㅤㅤ### Principais Diferenças:
+
 ㅤㅤㅤㅤ. Configuração de VirtualHost vs Servidor Padrão: O Apache2 usa VirtualHost para configurar diferentes hosts virtuais, enquanto o Nginx usa um arquivo de
 configuração padrão para definir o servidor principal.
 
