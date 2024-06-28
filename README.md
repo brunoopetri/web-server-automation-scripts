@@ -61,7 +61,7 @@ Descrição dos Arquivos e Diretórios
 
 Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente a configuração e automação dos servidores web Apache e Nginx no ambiente Docker.
 
-
+## Verificação do Status:
 
 ㅤㅤ  Para visualizar a saída do `script test_servers.sh` e garantir que os testes automáticos dos servidores Nginx e Apache2 foram executados com sucesso, você pode seguir estas etapas:
 
