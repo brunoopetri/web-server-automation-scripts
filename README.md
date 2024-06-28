@@ -172,17 +172,17 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤㅤㅤㅤ. Define a porta para o Apache2 ouvindo (Listen 8081).
 
-ㅤㅤㅤㅤ. Configura um VirtualHost em /etc/apache2/sites-available/000-default.conf para a porta especificada.
+ㅤㅤㅤㅤ. Configura um VirtualHost em `/etc/apache2/sites-available/000-default.conf` para a porta especificada.
 
 ㅤㅤㅤ2. Módulos:
 
-ㅤㅤㅤㅤHabilita o módulo rewrite com sudo a2enmod rewrite.
+ㅤㅤㅤㅤHabilita o módulo `rewrite` com `sudo a2enmod rewrite`.
 
 ㅤㅤㅤ3. Diretórios e Permissões:
 
-ㅤㅤㅤㅤDefine opções para o diretório /var/www/html no VirtualHost.
+ㅤㅤㅤㅤDefine opções para o diretório `/var/www/html` no VirtualHost.
 
-ㅤㅤㅤㅤConfigura permissões (Require all granted) para acessar o diretório.
+ㅤㅤㅤㅤConfigura permissões (`Require all granted`) para acessar o diretório.
 
 ㅤㅤNginx Script:
 
@@ -190,23 +190,23 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤㅤㅤㅤDefine a porta para o Nginx ouvindo (listen 8080).
 
-ㅤㅤㅤㅤConfigura um servidor padrão em /etc/nginx/sites-available/default.
+ㅤㅤㅤㅤConfigura um servidor padrão em `/etc/nginx/sites-available/default`.
 
 ㅤㅤㅤ2. Diretórios e Index:
 
-ㅤㅤㅤㅤDefine o diretório raiz (root /usr/share/nginx/html) para servir conteúdo estático.
+ㅤㅤㅤㅤDefine o diretório raiz (`root /usr/share/nginx/html`) para servir conteúdo estático.
 
-ㅤㅤㅤㅤDefine o arquivo de índice padrão (index index.html index.htm).
+ㅤㅤㅤㅤDefine o arquivo de índice padrão (`index index.html index.htm`).
 
 ㅤㅤㅤ3. Habilitação de Configuração:
 
-ㅤㅤㅤㅤCria um link simbólico para habilitar o arquivo de configuração em /etc/nginx/sites-enabled/default.
+ㅤㅤㅤㅤCria um link simbólico para habilitar o arquivo de configuração em `/etc/nginx/sites-enabled/default`.
 
-ㅤㅤㅤ### Verificação de Status:
+ㅤㅤㅤ# Verificação de Status:
 
-ㅤㅤㅤㅤAmbos os scripts verificam se o serviço está em execução usando pgrep e fornecem mensagens de sucesso ou falha com base nessa verificação.
+ㅤㅤㅤㅤAmbos os scripts verificam se o serviço está em execução usando `pgrep` e fornecem mensagens de sucesso ou falha com base nessa verificação.
 
-ㅤㅤㅤ### Principais Diferenças:
+ㅤㅤㅤ# Principais Diferenças:
 
 ㅤㅤㅤㅤ. Configuração de VirtualHost vs Servidor Padrão:
 
@@ -218,6 +218,6 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤㅤㅤㅤ. Comandos de Gestão de Serviço:
 
-ㅤㅤㅤㅤㅤOs comandos para iniciar e verificar o status do serviço (sudo service apache2 start e sudo service nginx start) são específicos para cada servidor.
+ㅤㅤㅤㅤㅤOs comandos para iniciar e verificar o status do serviço (`sudo service apache2 start` e `sudo service nginx start`) são específicos para cada servidor.
 
 Ambos os scripts seguem uma abordagem similar de instalação, atualização de pacotes e configuração através de redirecionamento de saída para um arquivo de log, o que é uma prática comum para scripts de instalação automatizada.
