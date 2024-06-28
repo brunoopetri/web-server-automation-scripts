@@ -107,7 +107,7 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ㅤㅤCaso contrário, se o processo não for encontrado, o script considera que o servidor está fora de operação.
 
-ㅤㅤAqui está um passo a passo para acessar os logs dos seus scripts:
+ㅤㅤAqui está um passo a passo para acessar os logs dos scripts:
 
 Acessar o container em execução:
 
