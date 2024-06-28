@@ -71,7 +71,7 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ㅤㅤㅤNesse método, o script faz solicitações HTTP diretamente aos servidores (Nginx e Apache2) nas portas 8080 e 8081.
 
-ㅤㅤㅤEle usa o utilitário curl para enviar uma solicitação GET a cada servidor.
+ㅤㅤㅤEle usa o utilitário `curl` para enviar uma solicitação GET a cada servidor.
 
 ㅤㅤㅤSe a resposta HTTP contiver o código “200 OK”, isso indica que o servidor está funcionando corretamente.
 
@@ -99,9 +99,9 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ### Verificação via Processos em Execução (Scripts: 'install_apache.sh' e 'install_ngingx.sh'):
 
-ㅤㅤNesse método, o script verifica diretamente os processos em execução no sistema host (fora do contêiner Docker).
+ㅤㅤNesse método, o script verifica diretamente os processos em execução no sistema host.
 
-ㅤㅤEle usa o comando pgrep para verificar se os processos nginx e apache2 estão ativos.
+ㅤㅤEle usa o comando `pgrep` para verificar se os processos `nginx` e `apache2` estão ativos.
 
 ㅤㅤSe o processo estiver em execução, o script considera que o servidor está operando.
 
