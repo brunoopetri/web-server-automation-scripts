@@ -220,4 +220,4 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤㅤㅤㅤㅤOs comandos para iniciar e verificar o status do serviço (`sudo service apache2 start` e `sudo service nginx start`) são específicos para cada servidor.
 
-Ambos os scripts seguem uma abordagem similar de instalação, atualização de pacotes e configuração através de redirecionamento de saída para um arquivo de log, o que é uma prática comum para scripts de instalação automatizada.
+Ambos os scripts seguem uma abordagem similar de instalação, atualização de pacotes e configuração através de redirecionamento de saída para um arquivo de log, o que é uma prática comum para scripts de instalação automatizada. A principal diferença reside nos detalhes específicos de configuração e comandos de cada servidor web.
