@@ -94,31 +94,31 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 . Vamos analisar cada parte do script:
 
-. #!/bin/bash:
+. `#!/bin/bash`:
 Essa linha define o interpretador de script como o Bash (Bourne Again Shell). Ela deve estar no início de qualquer script Bash.
 
-. LOG_FILE="/usr/local/logs/install_apache.log":
-Essa linha define uma variável chamada LOG_FILE com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
+. `LOG_FILE="/usr/local/logs/install_apache.log`:
+Essa linha define uma variável chamada `LOG_FILE` com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
 
-. BACKUP_DIR="/usr/local/backups/apache":
+. `BACKUP_DIR="/usr/local/backups/apache`:
 Essa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
 
-. exec > >(tee -a $LOG_FILE) 2>&1:
+. `exec > >(tee -a $LOG_FILE) 2>&1`:
 Essa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
-O comando tee -a grava a saída tanto no arquivo quanto na tela.
+O comando `tee -a` grava a saída tanto no arquivo quanto na tela.
 
 . Atualização de Pacotes:
-O script executa sudo apt-get update -y para atualizar os pacotes do sistema.
+O script executa `sudo apt-get update -y` para atualizar os pacotes do sistema.
 
 . Instalação e Configuração do Apache2:
-O Apache2 é instalado com sudo apt-get install apache2 -y.
-O arquivo de configuração ports.conf é modificado para ouvir na porta 8081.
-O arquivo de configuração 000-default.conf é criado para definir um VirtualHost na porta 8081, apontando para o diretório /var/www/html.
-O módulo rewrite é habilitado.
+O Apache2 é instalado com `sudo apt-get install apache2 -y`.
+O arquivo de configuração `ports.conf` é modificado para ouvir na porta 8081.
+O arquivo de configuração `000-default.conf` é criado para definir um VirtualHost na porta 8081, apontando para o diretório `/var/www/html`.
+O módulo `rewrite` é habilitado.
 O serviço Apache2 é iniciado.
 
 . Verificação do Status do Apache2:
-O script verifica se o processo do Apache2 está em execução usando pgrep.
+O script verifica se o processo do Apache2 está em execução usando `pgrep`.
 Se o processo estiver ativo, exibe uma mensagem de sucesso; caso contrário, exibe uma mensagem de falha e sai com código de erro 1.
 
 . Mensagem de Conclusão:
