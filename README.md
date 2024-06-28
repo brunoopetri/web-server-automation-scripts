@@ -95,13 +95,16 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 . Vamos analisar cada parte do script:
 
 . `#!/bin/bash`:
-Essa linha define o interpretador de script como o Bash (Bourne Again Shell). Ela deve estar no início de qualquer script Bash.
+
+ㅤEssa linha define o interpretador de script como o Bash (Bourne Again Shell). Ela deve estar no início de qualquer script Bash.
 
 . `LOG_FILE="/usr/local/logs/install_apache.log`:
-Essa linha define uma variável chamada `LOG_FILE` com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
+
+ㅤEssa linha define uma variável chamada `LOG_FILE` com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
 
 . `BACKUP_DIR="/usr/local/backups/apache`:
-Essa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
+
+ㅤEssa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
 
 . `exec > >(tee -a $LOG_FILE) 2>&1`:
 Essa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
