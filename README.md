@@ -181,9 +181,9 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤ3. Configuração das portas e arquivos de configuração:
 
-ㅤㅤㅤ. Apache2: ouvindo (`VirtualHost *:8081`) e arquivo de configuração em `/etc/apache2/sites-available/000-default.conf`
+ㅤㅤㅤ. Apache2: porta (`VirtualHost *:8081`) e arquivo de configuração em `/etc/apache2/sites-available/000-default.conf`
 
-ㅤㅤㅤ. Nginx: ouvindo (`listen 8080`) e  arquivo de configuração em `/etc/nginx/sites-available/default`
+ㅤㅤㅤ. Nginx: porta (`listen 8080`) e  arquivo de configuração em `/etc/nginx/sites-available/default`
 
 ㅤ4. Ativação e modificação de módulos:
 
