@@ -69,7 +69,15 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
     ㅤㅤㅤdocker exec -it webserver_container cat /usr/local/logs/test_servers.log
 
-ㅤ
+ㅤㅤㅤNesse método, o script faz solicitações HTTP diretamente aos servidores (Nginx e Apache2) nas portas 8080 e 8081.
+
+ㅤㅤㅤEle usa o utilitário curl para enviar uma solicitação GET a cada servidor.
+
+ㅤㅤㅤSe a resposta HTTP contiver o código “200 OK”, isso indica que o servidor está funcionando corretamente.
+
+ㅤㅤㅤCaso contrário, se a resposta não for “200 OK”, o script considera que houve uma falha no teste.
+
+ㅤㅤㅤEsse método é útil para verificar se os servidores estão respondendo corretamente às solicitações HTTP e se estão servindo conteúdo.ㅤ
 
 ㅤㅤㅤ- Exemplo de visualização logs do test_servers:
 
