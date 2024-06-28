@@ -97,6 +97,17 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
   
 <img width="1280" alt="nginx" src="https://github.com/brunoopetri/web-server-automation-scripts/assets/98756562/62083e87-9252-41e1-994f-d46cb1b51bd2">
 
+### Verificação via Processos em Execução (Scripts: 'install_apache.sh' e 'install_ngingx.sh'):
+
+ㅤㅤNesse método, o script verifica diretamente os processos em execução no sistema host (fora do contêiner Docker).
+
+ㅤㅤEle usa o comando pgrep para verificar se os processos nginx e apache2 estão ativos.
+
+ㅤㅤSe o processo estiver em execução, o script considera que o servidor está operando.
+
+ㅤㅤCaso contrário, se o processo não for encontrado, o script considera que o servidor está fora de operação.
+
+ㅤㅤEsse método é mais focado nos processos do sistema e não depende de solicitações externas.
 
 ### Descrição do install_apache.sh
 
