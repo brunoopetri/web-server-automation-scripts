@@ -169,19 +169,40 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤ1. Nome dos arquivos de log e backup:
 
-ㅤㅤ. Apache2: `install_apache.log, apache`
+ㅤㅤㅤ. Apache2: `install_apache.log, apache`
 
-ㅤㅤ. Nginx: `install_nginx.log, nginx`
+ㅤㅤㅤ. Nginx: `install_nginx.log, nginx`
 
 ㅤ2. Instalação do pacote:
 
-ㅤㅤ. Apache2: `sudo apt-get install apache2 -y`
+ㅤㅤㅤ. Apache2: `sudo apt-get install apache2 -y`
 
-ㅤㅤ. Nginx: `sudo apt-get install nginx -y`
+ㅤㅤㅤ. Nginx: `sudo apt-get install nginx -y`
 
 ㅤ3. Configuração das portas e arquivos de configuração:
 
-. Apache2: ouvindo (`VirtualHost *:8081`) e arquivo de configuração em `/etc/apache2/sites-available/000-default.conf`
+ㅤㅤㅤ. Apache2: ouvindo (`VirtualHost *:8081`) e arquivo de configuração em `/etc/apache2/sites-available/000-default.conf`
 
-. Nginx: ouvindo (`listen 8080`) e  arquivo de configuração em `/etc/nginx/sites-available/default`
+ㅤㅤㅤ. Nginx: ouvindo (`listen 8080`) e  arquivo de configuração em `/etc/nginx/sites-available/default`
 
+ㅤ4. Ativação e modificação de módulos:
+
+ㅤㅤㅤ. Apache2: `sudo a2enmod rewrite`
+
+ㅤㅤㅤ. Nginx: Não é necessário ativar módulos extras no exemplo dado.
+
+ㅤ5. Início do serviço:
+
+ㅤㅤㅤ. Apache2: `sudo service apache2 start`
+
+ㅤㅤㅤ. Nginx: `sudo service nginx start`
+
+ㅤ6. Verificação do status do serviço:
+
+ㅤㅤㅤ. Ambos verificam se o serviço está em execução, mas os comandos são ligeiramente diferentes devido aos nomes dos processos.
+
+ㅤㅤㅤ. Apache2: `if pgrep apache2 >/dev/null; then`
+
+ㅤㅤㅤ. Nginx: `if pgrep nginx >/dev/null; then`
+
+Ambos os scripts seguem a mesma lógica básica: atualizar pacotes, instalar o servidor web correspondente, configurar a porta e os arquivos de configuração necessários, iniciar o serviço e verificar se está funcionando corretamente. A principal diferença reside nos detalhes específicos de configuração e comandos de cada servidor web.
