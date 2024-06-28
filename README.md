@@ -162,62 +162,26 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
 
-### Os scripts para instalação e configuração do Apache2 e Nginx são semelhantes na estrutura básica de um script shell, mas diferem nos detalhes específicos de configuração de cada servidor web. 
 
-ㅤAqui estão algumas diferenças principais entre os dois scripts fornecidos:
+### Os scripts de instalação e configuração do Apache2 (install_apache.sh) e do Nginx (install_nginx.sh) são semelhantes em estrutura e propósito, mas diferem nos detalhes específicos de instalação e configuração dos respectivos servidores web. 
 
-ㅤㅤApache2 Script:
+ㅤㅤAqui estão as principais diferenças:
 
-ㅤㅤㅤ1. Porta e VirtualHost:
+ㅤ1. Nome dos arquivos de log e backup:
 
-ㅤㅤㅤㅤ. Define a porta para o Apache2 ouvindo (Listen 8081).
+ㅤㅤ. Apache2: `install_apache.log, apache`
 
-ㅤㅤㅤㅤ. Configura um VirtualHost em `/etc/apache2/sites-available/000-default.conf` para a porta especificada.
+ㅤㅤ. Nginx: `install_nginx.log, nginx`
 
-ㅤㅤㅤ2. Módulos:
+ㅤ2. Instalação do pacote:
 
-ㅤㅤㅤㅤHabilita o módulo `rewrite` com `sudo a2enmod rewrite`.
+ㅤㅤ. Apache2: `sudo apt-get install apache2 -y`
 
-ㅤㅤㅤ3. Diretórios e Permissões:
+ㅤㅤ. Nginx: `sudo apt-get install nginx -y`
 
-ㅤㅤㅤㅤDefine opções para o diretório `/var/www/html` no VirtualHost.
+ㅤ3. Configuração das portas e arquivos de configuração:
 
-ㅤㅤㅤㅤConfigura permissões (`Require all granted`) para acessar o diretório.
+. Apache2: ouvindo (`VirtualHost *:8081`) e arquivo de configuração em `/etc/apache2/sites-available/000-default.conf`
 
-ㅤㅤNginx Script:
+. Nginx: ouvindo (`listen 8080`) e  arquivo de configuração em `/etc/nginx/sites-available/default`
 
-ㅤㅤㅤ1. Porta e Servidor:
-
-ㅤㅤㅤㅤDefine a porta para o Nginx ouvindo (listen 8080).
-
-ㅤㅤㅤㅤConfigura um servidor padrão em `/etc/nginx/sites-available/default`.
-
-ㅤㅤㅤ2. Diretórios e Index:
-
-ㅤㅤㅤㅤDefine o diretório raiz (`root /usr/share/nginx/html`) para servir conteúdo estático.
-
-ㅤㅤㅤㅤDefine o arquivo de índice padrão (`index index.html index.htm`).
-
-ㅤㅤㅤ3. Habilitação de Configuração:
-
-ㅤㅤㅤㅤCria um link simbólico para habilitar o arquivo de configuração em `/etc/nginx/sites-enabled/default`.
-
-ㅤㅤㅤ# Verificação de Status:
-
-ㅤㅤㅤㅤAmbos os scripts verificam se o serviço está em execução usando `pgrep` e fornecem mensagens de sucesso ou falha com base nessa verificação.
-
-ㅤㅤㅤ# Principais Diferenças:
-
-ㅤㅤㅤㅤ. Configuração de VirtualHost vs Servidor Padrão:
-
-ㅤㅤㅤㅤㅤㅤO Apache2 usa VirtualHost para configurar diferentes hosts virtuais, enquanto o Nginx usa um arquivo de configuração padrão para definir o servidor principal.
-
-ㅤㅤㅤㅤ. Sintaxe de Configuração:
-
-ㅤㅤㅤㅤㅤㅤA sintaxe de configuração de cada servidor (Apache2 e Nginx) é específica para suas respectivas configurações. O Apache2 usa uma estrutura de diretório e permissões diferentes do Nginx.
-
-ㅤㅤㅤㅤ. Comandos de Gestão de Serviço:
-
-ㅤㅤㅤㅤㅤOs comandos para iniciar e verificar o status do serviço (`sudo service apache2 start` e `sudo service nginx start`) são específicos para cada servidor.
-
-Ambos os scripts seguem uma abordagem similar de instalação, atualização de pacotes e configuração através de redirecionamento de saída para um arquivo de log, o que é uma prática comum para scripts de instalação automatizada. A principal diferença reside nos detalhes específicos de configuração e comandos de cada servidor web.
