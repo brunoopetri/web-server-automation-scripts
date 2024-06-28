@@ -107,7 +107,32 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ㅤㅤCaso contrário, se o processo não for encontrado, o script considera que o servidor está fora de operação.
 
-ㅤㅤEsse método é mais focado nos processos do sistema e não depende de solicitações externas.
+ㅤㅤAqui está um passo a passo para acessar os logs dos seus scripts:
+
+Acessar o container em execução:
+
+Você pode usar o comando docker exec para acessar um terminal interativo dentro do container em execução.
+
+
+docker exec -it webserver_container /bin/bash
+
+Verificar os logs de instalação:
+
+Uma vez dentro do container, você pode verificar o conteúdo dos arquivos de log gerados pelos scripts. No seu caso, os arquivos de log estão em /usr/local/logs/.
+
+Para ver o log do Apache:
+
+
+cat /usr/local/logs/install_apache.log
+
+Para ver o log do Nginx:
+
+
+cat /usr/local/logs/install_nginx.log
+
+Esses comandos irão mostrar os logs dos respectivos scripts, permitindo que você veja o resultado de cada comando executado pelo script. Se houver algum erro ou mensagem 
+
+de sucesso, ele será exibido nos logs.
 
 ### Descrição do install_apache.sh
 
