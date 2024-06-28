@@ -115,49 +115,49 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 . `#!/bin/bash`:
 
-ㅤEssa linha define o interpretador de script como o Bash (Bourne Again Shell). Ela deve estar no início de qualquer script Bash.
+ㅤㅤEssa linha define o interpretador de script como o Bash (Bourne Again Shell). Ela deve estar no início de qualquer script Bash.
 
 . `LOG_FILE="/usr/local/logs/install_apache.log`:
 
-ㅤEssa linha define uma variável chamada `LOG_FILE` com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
+ㅤㅤEssa linha define uma variável chamada `LOG_FILE` com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
 
 . `BACKUP_DIR="/usr/local/backups/apache`:
 
-ㅤEssa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
+ㅤㅤEssa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
 
 . `exec > >(tee -a $LOG_FILE) 2>&1`:
 
-ㅤEssa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
+ㅤㅤEssa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
 
-ㅤO comando `tee -a` grava a saída tanto no arquivo quanto na tela.
+ㅤㅤO comando `tee -a` grava a saída tanto no arquivo quanto na tela.
 
 . Atualização de Pacotes:
 
-ㅤO script executa `sudo apt-get update -y` para atualizar os pacotes do sistema.
+ㅤㅤO script executa `sudo apt-get update -y` para atualizar os pacotes do sistema.
 
 . Instalação e Configuração do Apache2:
 
-ㅤO Apache2 é instalado com `sudo apt-get install apache2 -y`.
+ㅤㅤO Apache2 é instalado com `sudo apt-get install apache2 -y`.
 
-ㅤO arquivo de configuração `ports.conf` é modificado para ouvir na porta 8081.
+ㅤㅤO arquivo de configuração `ports.conf` é modificado para ouvir na porta 8081.
 
-ㅤO arquivo de configuração `000-default.conf` é criado para definir um VirtualHost na porta 8081, apontando para o diretório `/var/www/html`.
+ㅤㅤO arquivo de configuração `000-default.conf` é criado para definir um VirtualHost na porta 8081, apontando para o diretório `/var/www/html`.
 
-ㅤO módulo `rewrite` é habilitado.
+ㅤㅤO módulo `rewrite` é habilitado.
 
-ㅤO serviço Apache2 é iniciado.
+ㅤㅤO serviço Apache2 é iniciado.
 
 . Verificação do Status do Apache2:
 
-ㅤO script verifica se o processo do Apache2 está em execução usando `pgrep`.
+ㅤㅤO script verifica se o processo do Apache2 está em execução usando `pgrep`.
 
-ㅤSe o processo estiver ativo, exibe uma mensagem de sucesso; caso contrário, exibe uma mensagem de falha e sai com código de erro 1.
+ㅤㅤSe o processo estiver ativo, exibe uma mensagem de sucesso; caso contrário, exibe uma mensagem de falha e sai com código de erro 1.
 
 . Mensagem de Conclusão:
 
-ㅤO script exibe uma mensagem indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
+ㅤㅤO script exibe uma mensagem indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
 
-ㅤ`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
+ㅤㅤ`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
 ㅤ
 
 Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
