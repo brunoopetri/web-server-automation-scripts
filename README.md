@@ -107,26 +107,38 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 ㅤEssa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
 
 . `exec > >(tee -a $LOG_FILE) 2>&1`:
-Essa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
-O comando `tee -a` grava a saída tanto no arquivo quanto na tela.
+
+ㅤEssa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
+
+ㅤO comando `tee -a` grava a saída tanto no arquivo quanto na tela.
 
 . Atualização de Pacotes:
-O script executa `sudo apt-get update -y` para atualizar os pacotes do sistema.
+
+ㅤO script executa `sudo apt-get update -y` para atualizar os pacotes do sistema.
 
 . Instalação e Configuração do Apache2:
-O Apache2 é instalado com `sudo apt-get install apache2 -y`.
-O arquivo de configuração `ports.conf` é modificado para ouvir na porta 8081.
-O arquivo de configuração `000-default.conf` é criado para definir um VirtualHost na porta 8081, apontando para o diretório `/var/www/html`.
-O módulo `rewrite` é habilitado.
-O serviço Apache2 é iniciado.
+
+ㅤO Apache2 é instalado com `sudo apt-get install apache2 -y`.
+
+ㅤO arquivo de configuração `ports.conf` é modificado para ouvir na porta 8081.
+
+ㅤO arquivo de configuração `000-default.conf` é criado para definir um VirtualHost na porta 8081, apontando para o diretório `/var/www/html`.
+
+ㅤO módulo `rewrite` é habilitado.
+
+ㅤO serviço Apache2 é iniciado.
 
 . Verificação do Status do Apache2:
-O script verifica se o processo do Apache2 está em execução usando `pgrep`.
-Se o processo estiver ativo, exibe uma mensagem de sucesso; caso contrário, exibe uma mensagem de falha e sai com código de erro 1.
+
+ㅤO script verifica se o processo do Apache2 está em execução usando `pgrep`.
+
+ㅤSe o processo estiver ativo, exibe uma mensagem de sucesso; caso contrário, exibe uma mensagem de falha e sai com código de erro 1.
 
 . Mensagem de Conclusão:
-O script exibe uma mensagem indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
-`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
+
+ㅤO script exibe uma mensagem indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
+
+ㅤ`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
 ㅤ
 
 Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
