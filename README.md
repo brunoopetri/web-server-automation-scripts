@@ -63,7 +63,7 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 
 
-ㅤㅤ4.1  Para visualizar a saída do `script test_servers.sh` e garantir que os testes automáticos dos servidores Nginx e Apache2 foram executados com sucesso, você pode seguir estas etapas:
+ㅤㅤ  Para visualizar a saída do `script test_servers.sh` e garantir que os testes automáticos dos servidores Nginx e Apache2 foram executados com sucesso, você pode seguir estas etapas:
 
 ㅤㅤㅤApós iniciar o contêiner, verifique os logs do test_servers, no terminal:
 
