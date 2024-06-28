@@ -208,11 +208,16 @@ Esses scripts são básicos e devem ser adaptados conforme necessário para ambi
 
 ㅤㅤㅤ### Principais Diferenças:
 
-ㅤㅤㅤㅤ. Configuração de VirtualHost vs Servidor Padrão: O Apache2 usa VirtualHost para configurar diferentes hosts virtuais, enquanto o Nginx usa um arquivo de
-configuração padrão para definir o servidor principal.
+ㅤㅤㅤㅤ. Configuração de VirtualHost vs Servidor Padrão:
 
-ㅤㅤㅤㅤ. Sintaxe de Configuração: A sintaxe de configuração de cada servidor (Apache2 e Nginx) é específica para suas respectivas configurações. O Apache2 usa uma estrutura de diretório e permissões diferentes do Nginx.
+ㅤㅤㅤㅤㅤㅤO Apache2 usa VirtualHost para configurar diferentes hosts virtuais, enquanto o Nginx usa um arquivo de configuração padrão para definir o servidor principal.
 
-ㅤㅤㅤㅤ. Comandos de Gestão de Serviço: Os comandos para iniciar e verificar o status do serviço (sudo service apache2 start e sudo service nginx start) são específicos para cada servidor.
+ㅤㅤㅤㅤ. Sintaxe de Configuração:
+
+ㅤㅤㅤㅤㅤㅤA sintaxe de configuração de cada servidor (Apache2 e Nginx) é específica para suas respectivas configurações. O Apache2 usa uma estrutura de diretório e permissões diferentes do Nginx.
+
+ㅤㅤㅤㅤ. Comandos de Gestão de Serviço:
+
+ㅤㅤㅤㅤㅤOs comandos para iniciar e verificar o status do serviço (sudo service apache2 start e sudo service nginx start) são específicos para cada servidor.
 
 Ambos os scripts seguem uma abordagem similar de instalação, atualização de pacotes e configuração através de redirecionamento de saída para um arquivo de log, o que é uma prática comum para scripts de instalação automatizada.
