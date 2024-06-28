@@ -161,3 +161,49 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 ㅤ
 
 Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
+
+### Os scripts para instalação e configuração do Apache2 e Nginx são semelhantes na estrutura básica de um script shell, mas diferem nos detalhes específicos de configuração de cada servidor web. 
+
+ㅤAqui estão algumas diferenças principais entre os dois scripts fornecidos:
+
+ㅤㅤApache2 Script:
+
+ㅤㅤㅤ1. Porta e VirtualHost:
+
+ㅤㅤㅤㅤ. Define a porta para o Apache2 ouvindo (Listen 8081).
+
+ㅤㅤㅤㅤ. Configura um VirtualHost em /etc/apache2/sites-available/000-default.conf para a porta especificada.
+
+ㅤㅤㅤ2. Módulos:
+
+ㅤㅤㅤㅤHabilita o módulo rewrite com sudo a2enmod rewrite.
+
+ㅤㅤㅤ3. Diretórios e Permissões:
+
+Define opções para o diretório /var/www/html no VirtualHost.
+Configura permissões (Require all granted) para acessar o diretório.
+
+ㅤㅤNginx Script:
+ㅤㅤㅤ1. Porta e Servidor:
+
+Define a porta para o Nginx ouvindo (listen 8080).
+Configura um servidor padrão em /etc/nginx/sites-available/default.
+ㅤㅤㅤ2. Diretórios e Index:
+
+Define o diretório raiz (root /usr/share/nginx/html) para servir conteúdo estático.
+Define o arquivo de índice padrão (index index.html index.htm).
+ㅤㅤㅤ3. Habilitação de Configuração:
+
+Cria um link simbólico para habilitar o arquivo de configuração em /etc/nginx/sites-enabled/default.
+ㅤㅤㅤ### Verificação de Status:
+ㅤㅤㅤㅤAmbos os scripts verificam se o serviço está em execução usando pgrep e fornecem mensagens de sucesso ou falha com base nessa verificação.
+
+ㅤㅤㅤ### Principais Diferenças:
+ㅤㅤㅤㅤ. Configuração de VirtualHost vs Servidor Padrão: O Apache2 usa VirtualHost para configurar diferentes hosts virtuais, enquanto o Nginx usa um arquivo de
+configuração padrão para definir o servidor principal.
+
+ㅤㅤㅤㅤ. Sintaxe de Configuração: A sintaxe de configuração de cada servidor (Apache2 e Nginx) é específica para suas respectivas configurações. O Apache2 usa uma estrutura de diretório e permissões diferentes do Nginx.
+
+ㅤㅤㅤㅤ. Comandos de Gestão de Serviço: Os comandos para iniciar e verificar o status do serviço (sudo service apache2 start e sudo service nginx start) são específicos para cada servidor.
+
+Ambos os scripts seguem uma abordagem similar de instalação, atualização de pacotes e configuração através de redirecionamento de saída para um arquivo de log, o que é uma prática comum para scripts de instalação automatizada.
