@@ -92,89 +92,38 @@ Seguindo essa estrutura, você deve conseguir gerenciar e visualizar facilmente 
 
 ### Descrição do install_apache.sh
 
-. Esta linha define o interpretador a ser utilizado para executar o script, neste caso, o Bash.
+. Vamos analisar cada parte do script:
 
-ㅤ`#!/bin/bash`
+. #!/bin/bash:
+Essa linha define o interpretador de script como o Bash (Bourne Again Shell). Ela deve estar no início de qualquer script Bash.
 
-. Essas linhas definem variáveis que armazenam o caminho do arquivo de log e do diretório de backup, respectivamente.
+. LOG_FILE="/usr/local/logs/install_apache.log":
+Essa linha define uma variável chamada LOG_FILE com o caminho para o arquivo de log onde as mensagens serão registradas durante a instalação e configuração do Apache2.
 
-ㅤ`LOG_FILE="/usr/local/logs/install_apache.log"`
+. BACKUP_DIR="/usr/local/backups/apache":
+Essa linha define outra variável chamada BACKUP_DIR com o caminho para o diretório onde os backups relacionados ao Apache2 serão armazenados.
 
-ㅤ`BACKUP_DIR="/usr/local/backups/apache"`
+. exec > >(tee -a $LOG_FILE) 2>&1:
+Essa linha redireciona a saída padrão (stdout) e a saída de erro (stderr) para o arquivo de log especificado.
+O comando tee -a grava a saída tanto no arquivo quanto na tela.
 
-. Redireciona a saída padrão e a saída de erro para o arquivo de log definido em LOG_FILE, permitindo também que a saída seja exibida no terminal em tempo real.
+. Atualização de Pacotes:
+O script executa sudo apt-get update -y para atualizar os pacotes do sistema.
 
-ㅤ`exec > >(tee -a $LOG_FILE) 2>&1`
+. Instalação e Configuração do Apache2:
+O Apache2 é instalado com sudo apt-get install apache2 -y.
+O arquivo de configuração ports.conf é modificado para ouvir na porta 8081.
+O arquivo de configuração 000-default.conf é criado para definir um VirtualHost na porta 8081, apontando para o diretório /var/www/html.
+O módulo rewrite é habilitado.
+O serviço Apache2 é iniciado.
 
-. Imprime uma mensagem indicando que os pacotes estão sendo atualizados e executa o comando para atualizar a lista de pacotes do sistema.
+. Verificação do Status do Apache2:
+O script verifica se o processo do Apache2 está em execução usando pgrep.
+Se o processo estiver ativo, exibe uma mensagem de sucesso; caso contrário, exibe uma mensagem de falha e sai com código de erro 1.
 
-ㅤ`echo "Atualizando os pacotes..."`
-
-ㅤ`sudo apt-get update -y`
-
-. Imprime uma mensagem indicando que o Apache2 está sendo instalado e executa o comando para instalar o servidor Apache2.
-
-ㅤ`echo "Instalando e configurando o Apache2..."`
-
-ㅤ`sudo apt-get install apache2 -y`
-
-. Modifica o arquivo de configuração do Apache para que ele escute na porta 8081 em vez da porta padrão (80).
-
-ㅤ`cat <<EOT > /etc/apache2/ports.conf`
-
-ㅤ`Listen 8081`
-
-ㅤ`EOT`
-
-. Cria um novo arquivo de configuração de site padrão para o Apache, definindo que o servidor irá responder na porta 8081 e que o diretório raiz dos documentos será /var/www/html.
-
-ㅤ`cat <<EOT > /etc/apache2/sites-available/000-default.conf`
-
-ㅤ`<VirtualHost *:8081>`
-
-ㅤ    `DocumentRoot /var/www/html`
-
-ㅤ    `<Directory /var/www/html>`
-
-ㅤ        `Options Indexes FollowSymLinks`
-
-ㅤ        `AllowOverride None`
-
- ㅤ       `Require all granted`
-
- ㅤ   `</Directory>`
-
-ㅤ`</VirtualHost>`
-
-ㅤ`EOT`
-
-. Habilita o módulo rewrite do Apache, que permite a reescrita de URLs
-
-ㅤ`sudo a2enmod rewrite`
-
-. Inicia o serviço Apache.
-
-ㅤ`sudo service apache2 start`
-
-. Imprime uma mensagem indicando que o status do Apache2 está sendo verificado. Se o processo do Apache2 estiver em execução, imprime uma mensagem de sucesso; caso contrário, imprime uma mensagem de falha e encerra o script com código de erro 1.
-
-ㅤ`echo "Verificando o status do Apache2..."`
-
-ㅤ`if pgrep apache2 >/dev/null; then`
-
- ㅤ   `echo "Apache2 instalado e em execução com sucesso!"`
-
-ㅤ`else`
-
-ㅤ    `echo "Falha ao iniciar o Apache2."`
-
-ㅤ    `exit 1`
-
-ㅤ`fi`
-
-. Imprime uma mensagem final indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
-
-ㅤ`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
+. Mensagem de Conclusão:
+O script exibe uma mensagem indicando que a instalação e configuração do Apache2 foram concluídas com sucesso.
+`echo "Instalação e configuração do Apache2 concluídas com sucesso!"`
 ㅤ
 
 Esses scripts são básicos e devem ser adaptados conforme necessário para ambientes específicos e requisitos de segurança. Eles fornecem uma base sólida para automatizar a configuração de servidores web, reduzindo o tempo e a probabilidade de erros na configuração manual.
