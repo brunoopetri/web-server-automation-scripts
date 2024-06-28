@@ -130,9 +130,7 @@ Para ver o log do Nginx:
 
 cat /usr/local/logs/install_nginx.log
 
-Esses comandos irão mostrar os logs dos respectivos scripts, permitindo que você veja o resultado de cada comando executado pelo script. Se houver algum erro ou mensagem 
-
-de sucesso, ele será exibido nos logs.
+Esses comandos irão mostrar os logs dos respectivos scripts, permitindo que você veja o resultado de cada comando executado pelo script. Se houver algum erro ou mensagem de sucesso, ele será exibido nos logs.
 
 ### Descrição do install_apache.sh
 
